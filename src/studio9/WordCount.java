@@ -31,12 +31,19 @@ public class WordCount {
 	public static Map<String, Integer> countWords(List<String> words) {
 
 		// FIXME
-		throw new NotYetImplementedException();
-
+		Map<String, Integer> wordsOther = new HashMap<String, Integer>();
+		for (int i=0; i<words.size(); i++) {
+			if (wordsOther.containsKey(words.get(i)) == true) {
+				wordsOther.put(words.get(i), wordsOther.get(words.get(i)+1));
+			} else {
+				wordsOther.put(words.get(i), 1);
+			}
+		}
+		return wordsOther;
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		List<String> wordList = new LinkedList<>();
 		wordList.add("to");
 		wordList.add("be");
@@ -45,7 +52,7 @@ public class WordCount {
 		wordList.add("to");
 		wordList.add("be");
 		Map<String, Integer> words = countWords(wordList);
-		
+
 		//TODO: Write code that will iterate over the words map
 		//to verify its contents
 	}
